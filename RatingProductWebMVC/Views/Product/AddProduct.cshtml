@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+@model RatingProductWebMVC.Models.Product
+
+<html>
+<head>
+</head>
+<body>
+    <div class="bg-info  p-2" width="200" style="--bs-bg-opacity: .5;">
+        <section class="w3l-form-36">
+            <div class="wrapper">
+                <div class="form-inner-cont">
+                    <h3>Add Product</h3>
+                    <form method="post" class="signin-form" action="@Url.Action("AddProduct","Product",FormMethod.Post)">
+
+
+                        <div class="form-input">
+                            <span class="fa fa-shopping-bag" aria-hidden="true"></span> <input type="text" name="ProductName" placeholder="Product Name"
+                                                                                        required />
+                        </div>
+                        <div class="form-input">
+                            <span class="fa fa-money" aria-hidden="true"></span> <input type="text" name="Price"
+                                                                                       placeholder="Product price" required />
+                        </div>
+
+                        <div class="form-input">
+                            <span class="fa fa-align-justify" aria-hidden="true"></span> <input type="text" name="Description" placeholder="Product Description"
+                                                                                      required />
+                        </div>
+                        <div class="form-input">
+                            <span class="fa fa-picture-o" aria-hidden="true"></span> <input type="file" name="Photo" value="fileupload" id="fileupload">
+                        </div>
+
+                        <div class="login-remember d-grid">
+                            <label></label>
+                            <button class="btn theme-button">Add</button>
+                        </div>
+                    </form>
+
+                    @*<div class="social-icons">
+                        <p class="continue"><span>Or</span></p>
+
+                        <p class="signup">Already have an account? <a style="color:orangered" href="@Url.Action("Login","Account")" class="signuplink">Login</a></p>
+                    </div>*@
+
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+</body>
+</html>

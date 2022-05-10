@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+
+}
+
+<body>
+    <div class="alert alert-warning">
+        <section class="w3l-form-36">
+            <div class="wrapper">
+                <div class="form-inner-cont">
+                    <h3>Login now</h3>
+                    @ViewBag.error
+                    <form method="post" action="@Url.Action("Login","Account")">
+                        <div class="form-input">
+                            <span class="fa fa-user" aria-hidden="true"></span> <input type="text" name="UserName"
+                                                                                             placeholder="Username" required />
+                        </div>
+                        <div class="form-input">
+                            <span class="fa fa-key" aria-hidden="true"></span> <input type="password" name="Password" placeholder="Password"
+                                                                                      required />
+                        </div>
+                        <div class="login-remember d-grid">
+                            <label class="check-remaind">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                <p class="remember">Remember me</p>
+                            </label>
+                            <button style="color:orange" class="btn theme-button">Login</button>
+                        </div>
+
+                    </form>
+                    <div class="social-icons">
+                    <p class="signup">Don’t have an account yet? <a style="color:orangered" href="@Url.Action("SignUp","Account")" class="signuplink">Sign up</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+
+

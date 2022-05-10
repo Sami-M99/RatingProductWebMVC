@@ -1,0 +1,560 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Carousel -->
+
+<style>
+    html, body {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .carousel {
+        position: relative;
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+        margin-top: 26px;
+    }
+
+    .carousel-inner {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .carousel-open:checked + .carousel-item {
+        position: static;
+        opacity: 100;
+    }
+
+    .carousel-item {
+        position: absolute;
+        opacity: 0;
+        -webkit-transition: opacity 0.6s ease-out;
+        transition: opacity 0.6s ease-out;
+    }
+
+        .carousel-item img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+    .carousel-control {
+        background: rgba(0, 0, 0, 0.28);
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        display: none;
+        font-size: 40px;
+        height: 40px;
+        line-height: 35px;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translate(0, -50%);
+        cursor: pointer;
+        -ms-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        text-align: center;
+        width: 40px;
+        z-index: 10;
+    }
+
+        .carousel-control.prev {
+            left: 2%;
+        }
+
+        .carousel-control.next {
+            right: 2%;
+        }
+
+        .carousel-control:hover {
+            background: rgba(0, 0, 0, 0.8);
+            color: #aaaaaa;
+        }
+
+    #carousel-1:checked ~ .control-1,
+    #carousel-2:checked ~ .control-2,
+    #carousel-3:checked ~ .control-3 {
+        display: block;
+    }
+
+    .carousel-indicators {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        bottom: 2%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+    }
+
+        .carousel-indicators li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+    .carousel-bullet {
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        font-size: 35px;
+    }
+
+        .carousel-bullet:hover {
+            color: #aaaaaa;
+        }
+
+    #carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+    #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+    #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+        color: #428bca;
+    }
+
+    #title {
+        width: 100%;
+        position: absolute;
+        padding: 0px;
+        margin: 0px auto;
+        text-align: center;
+        font-size: 27px;
+        color: rgba(255, 255, 255, 1);
+        font-family: 'Open Sans', sans-serif;
+        z-index: 9999;
+        text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+    }
+</style>
+
+<div class="carousel">
+    <div class="carousel-inner">
+        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+        <div class="carousel-item">
+            <img src="~/Content/Images/online-shopping-vs-traditional-shopping.jpg">
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="~/Content/Images/online-shopping-apps-1600x832.jpg">
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="~/Content/Images/Two-thirds-of-consumers-have-increased-online-shopping-because-of-the-coronavirus.png">
+        </div>
+        <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+        <label for="carousel-2" class="carousel-control next control-1">›</label>
+        <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+        <label for="carousel-3" class="carousel-control next control-2">›</label>
+        <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+        <label for="carousel-1" class="carousel-control next control-3">›</label>
+        <ol class="carousel-indicators">
+            <li>
+                <label for="carousel-1" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-2" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-3" class="carousel-bullet">•</label>
+            </li>
+        </ol>
+    </div>
+</div>
+
+
+<!-- Cards -->
+<style>
+    body {
+        font-family: 'Muli', sans-serif;
+        background: #ddd;
+    }
+
+    .shell {
+        padding: 80px 0;
+    }
+
+    .wsk-cp-product {
+        background: #fff;
+        padding: 15px;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        position: relative;
+        margin: 20px auto;
+    }
+
+    .wsk-cp-img {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translate(-50%);
+        -webkit-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+        -moz-transform: translate(-50%);
+        -o-transform: translate(-50%);
+        -khtml-transform: translate(-50%);
+        width: 100%;
+        padding: 15px;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .wsk-cp-img img {
+            width: 100%;
+            transition: all 0.2s ease-in-out;
+            border-radius: 6px;
+        }
+
+    .wsk-cp-product:hover .wsk-cp-img {
+        top: -40px;
+    }
+
+        .wsk-cp-product:hover .wsk-cp-img img {
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+
+    .wsk-cp-text {
+        padding-top: 150%;
+    }
+
+        .wsk-cp-text .category {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px;
+            margin-bottom: 45px;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+        }
+
+            .wsk-cp-text .category > * {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                -webkit-transform: translate(-50%,-50%);
+                -moz-transform: translate(-50%,-50%);
+                -ms-transform: translate(-50%,-50%);
+                -o-transform: translate(-50%,-50%);
+                -khtml-transform: translate(-50%,-50%);
+            }
+
+            .wsk-cp-text .category > span {
+                padding: 12px 30px;
+                border: 1px solid #313131;
+                background: #212121;
+                color: #fff;
+                box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+                border-radius: 27px;
+                transition: all 0.05s ease-in-out;
+            }
+
+    .wsk-cp-product:hover .wsk-cp-text .category > span {
+        border-color: #ddd;
+        box-shadow: none;
+        padding: 11px 28px;
+    }
+
+    .wsk-cp-product:hover .wsk-cp-text .category {
+        margin-top: 0px;
+    }
+
+    .wsk-cp-text .title-product {
+        text-align: center;
+    }
+
+        .wsk-cp-text .title-product h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px auto;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+    .wsk-cp-text .description-prod p {
+        margin: 0;
+    }
+    /* Truncate */
+    .wsk-cp-text .description-prod {
+        text-align: center;
+        width: 100%;
+        height: 62px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin-bottom: 15px;
+    }
+
+    .card-footer {
+        padding: 25px 0 5px;
+        border-top: 1px solid #ddd;
+    }
+
+        .card-footer:after, .card-footer:before {
+            content: '';
+            display: table;
+        }
+
+        .card-footer:after {
+            clear: both;
+        }
+
+        .card-footer .wcf-left {
+            float: left;
+        }
+
+        .card-footer .wcf-right {
+            float: right;
+        }
+
+    .price {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    a.buy-btn {
+        display: block;
+        color: #212121;
+        text-align: center;
+        font-size: 18px;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        border-radius: 50%;
+        border: 1px solid #212121;
+        transition: all 0.2s ease-in-out;
+    }
+
+        a.buy-btn:hover, a.buy-btn:active, a.buy-btn:focus {
+            border-color: #FF9800;
+            background: #FF9800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+    .wsk-btn {
+        display: inline-block;
+        color: #212121;
+        text-align: center;
+        font-size: 18px;
+        transition: all 0.2s ease-in-out;
+        border-color: #FF9800;
+        background: #FF9800;
+        padding: 12px 30px;
+        border-radius: 27px;
+        margin: 0 5px;
+    }
+
+        .wsk-btn:hover, .wsk-btn:focus, .wsk-btn:active {
+            text-decoration: none;
+            color: #fff;
+        }
+
+    .red {
+        color: #F44336;
+        font-size: 22px;
+        display: inline-block;
+        margin: 0 5px;
+    }
+
+    .screen and (max-width: 991px) {
+        .wsk-cp-product
+
+    {
+        margin: 40px auto;
+    }
+
+    .wsk-cp-product .wsk-cp-img {
+        top: -40px;
+    }
+
+        .wsk-cp-product .wsk-cp-img img {
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+
+    .wsk-cp-product .wsk-cp-text .category > span {
+        border-color: #ddd;
+        box-shadow: none;
+        padding: 11px 28px;
+    }
+
+    .wsk-cp-product .wsk-cp-text .category {
+        margin-top: 0px;
+    }
+
+    a.buy-btn {
+        border-color: #FF9800;
+        background: #FF9800;
+        color: #fff;
+    }
+    }
+</style>
+
+<div class="container text-center">
+    <br />
+    <h1>Product List</h1>
+    @*<span>Create With <i class="zmdi zmdi-favorite red"></i>  By: <strong>Deni Kurniawan</strong> From: <i><a href="http://blog.wingerdstok.com" class="wsk-btn">Wingerdstok</a></i></span>*@
+</div>
+
+<div class="shell">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var product in ViewBag.products)
+            {
+                <div class="col-md-3">
+                    <div class="wsk-cp-product">
+                        <div class="wsk-cp-img"><img src="~/Content/Images/Products/@product.Photo" alt="Product" class="img-responsive" /></div>
+                        <div class="wsk-cp-text">
+                            <div class="text-center">
+                                <p><a class="btn theme-button" style="color:orange" href="@Url.Action("Detail", "Product", new { id = @product.Id })">More Details</a></p>
+                                @*<span><i><a href="@Url.Action("Detail", "Product", new { id = @product.Id })" class="wsk-btn">Details</a></i></span>*@
+                                <br />
+                            </div>
+                            <div class="title-product">
+                                <h3>@product.ProductName</h3>
+                            </div>
+                            <div class="description-prod">
+                                <p>@product.Description</p>
+
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="wcf-left"><span class="price">@product.Price $</span></div>
+                                <div class="wcf-right">
+
+                                    @{int toplam = 0;
+                                        int count = 0;}
+
+                                    @foreach (var review in ViewBag.reviews)
+                                    {
+                                        if ((@review.ProductId == @product.Id))
+                                        {
+                                            if (review.Rating != null)
+                                            {
+                                                toplam += review.Rating;
+                                                count++;
+                                            }
+                                            else
+                                            {
+                                                count++;
+                                            }
+
+                                        }
+
+                                    }
+                                    @if (count != 0)
+                                    {
+                                        toplam = (int)(Math.Ceiling((double)(toplam / count)));
+                                    }
+
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        if (i < toplam)
+                                        {
+                                            <span class="fa fa-star checked" style="color:orange"></span>
+                                        }
+                                        else
+                                        {
+                                            <span class="fa fa-star"></span>
+                                        }
+                                    }
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @*<div class="row">
+                <div class="col-md-6">
+                    <div class="wsk-cp-product">
+                        <div class="wsk-cp-img">
+                            <img src="https://3.bp.blogspot.com/-eDeTttUjHxI/WVSvmI-552I/AAAAAAAAAKw/0T3LN6jABKMyEkTRUUQMFxpe6PLvtcMMwCPcBGAYYCw/s1600/001-culture-clash-matthew-gianoulis.jpg" alt="Product" class="img-responsive" />
+                        </div>
+                        <div class="wsk-cp-text">
+                            <div class="category">
+                                <span>Ethnic</span>
+                            </div>
+                            <div class="title-product">
+                                <h3>My face not my heart</h3>
+                            </div>
+                            <div class="description-prod">
+                                <p>Description Product tell me how to change playlist height size like 600px in html5 player. player good work now check this link</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="wcf-left"><span class="price">Rp500.000</span></div>
+                                <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="wsk-cp-product">
+                        <div class="wsk-cp-img"><img src="https://1.bp.blogspot.com/-b-2SgNUrFHg/WVSvmewWqgI/AAAAAAAAAK0/1K4YCcbYjhokHwV_IgiVJN9mEnQoWunIwCPcBGAYYCw/s1600/fashion-portrait-nicole-6347.jpg" alt="Product" class="img-responsive" /></div>
+                        <div class="wsk-cp-text">
+                            <div class="category">
+                                <span>Introvert</span>
+                            </div>
+                            <div class="title-product">
+                                <h3>My face not my heart</h3>
+                            </div>
+                            <div class="description-prod">
+                                <p>Description Product tell me how to change playlist height size like 600px in html5 player. player good work now check this link</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="wcf-left"><span class="price">Rp500.000</span></div>
+                                <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="wsk-cp-product">
+                        <div class="wsk-cp-img"><img src="https://1.bp.blogspot.com/-XL_Ba-178Fo/WVSvm5AbApI/AAAAAAAAAK4/X5109HTqUiAhPjbmz4NFVHcpL7ZWe6T3ACPcBGAYYCw/s1600/wow-29.jpg" alt="Product" class="img-responsive" /></div>
+                        <div class="wsk-cp-text">
+                            <div class="category">
+                                <span>Beauty</span>
+                            </div>
+                            <div class="title-product">
+                                <h3>My face not my heart</h3>
+                            </div>
+                            <div class="description-prod">
+                                <p>Description Product tell me how to change playlist height size like 600px in html5 player. player good work now check this link</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="wcf-left"><span class="price">Rp500.000</span></div>
+                                <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="wsk-cp-product">
+                        <div class="wsk-cp-img"><img src="https://3.bp.blogspot.com/-iUes8qr4uC8/WVSvl6Wf_fI/AAAAAAAAAKs/JiTUUVvdbqEC_QGGaQhuVJiezIN3LIqEgCPcBGAYYCw/s1600/IMG_5367-bp.jpg" alt="Product" class="img-responsive" /></div>
+                        <div class="wsk-cp-text">
+                            <div class="category">
+                                <span>Drama</span>
+                            </div>
+                            <div class="title-product">
+                                <h3>My face not my heart cvf ggf gfg g</h3>
+                            </div>
+                            <div class="description-prod">
+                                <p>Description Product tell me how to change playlist height size like 600px in html5 player. player good work now check this link</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="wcf-left"><span class="price">Rp500.000</span></div>
+                                <div class="wcf-right"><a href="#" class="buy-btn"><i class="zmdi zmdi-shopping-basket"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+

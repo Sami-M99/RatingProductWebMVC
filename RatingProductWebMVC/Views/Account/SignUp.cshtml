@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+
+}
+@model RatingProductWebMVC.Models.Account 
+
+<html>
+<head>
+</head>
+<body>
+    <div class="bg-info  p-2" width="200" style="--bs-bg-opacity: .5;">
+        <section class="w3l-form-36">
+            <div class="wrapper">
+                <div class="form-inner-cont">
+                    <h3>Sign Up now</h3>
+                <form method="post" class="signin-form" action="@Url.Action("SignUp","Account",FormMethod.Post)">
+                 
+
+                    <div class="form-input">
+                        <span class="fa fa-vcard" aria-hidden="true"></span> <input type="text" name="FullName" placeholder="Full Name"
+                                                                                  required />
+                    </div>
+                    <div class="form-input">
+                        <span class="fa fa-user" aria-hidden="true"></span> <input type="text" name="UserName"
+                                                                                   placeholder="Username" required />
+                    </div>
+
+                    <div class="form-input">
+                        <span class="fa fa-key" aria-hidden="true"></span> <input type="password" name="Password" placeholder="Password"
+                                                                                  required />
+                    </div>
+                    <div class="login-remember d-grid">
+                        <label class="check-remaind">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            <p class="remember">Remember me</p>
+                        </label>
+                        <button class="btn theme-button">Sign Up</button>
+                    </div>
+                </form>
+                    
+                    <div class="social-icons">
+                        <p class="continue"><span>Or</span></p>
+
+                        <p class="signup">Already have an account? <a style="color:orangered" href="@Url.Action("Login","Account")" class="signuplink">Login</a></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+</body>
+</html>

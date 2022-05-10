@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+
+}
+
+@model RatingProductWebMVC.Models.Review
+
+
+
+<html>
+<head>
+
+</head>
+
+<body>
+    <h1></h1>
+    <div>
+        <dl class="row">
+            <dt class="h2 col-sm-10">Product Details </dt>
+            <p><a class="btn theme-button" style="color:orange" href="@Url.Action("Index", "Product")">Back</a></p>
+
+        </dl>
+    </div>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-pull-3">
+                <img src="~/Content/Images/Products/@ViewBag.products.Photo" class="rounded float-end" width="400" alt="...">
+            </div>
+            <div class="col-md-16">
+                <div class="card-body">
+                    <h1 class="card-title">@ViewBag.products.ProductName</h1>
+                    <p class="h5">@ViewBag.products.Description</p>
+
+                    <dl class="row">
+                        <dt class="h4 col-sm-2">Price : </dt>
+                        <dd class="h4 col-sm-4 display-6 text-danger">$ @ViewBag.products.Price</dd>
+
+                    </dl>
+
+
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3> Rating and Comments </h3>
+
+    @if (Session["UserName"] == null)
+    {
+        <p class="signup">You are not registered in the account yet!! &emsp;<a style="color:orangered" href="@Url.Action("Login","Account")" class="signuplink">Login to post your comments...</a></p>
+
+    }
+    else
+    {
+        using (Html.BeginForm("SendReview", "Product", FormMethod.Post))
+        {
+            <table cellpadding="2" cellspacing="2">
+                <tr>
+                    <td  class="h4">Rating</td>
+                    <td>
+                        <style>
+                            * {
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            .rate {
+                                float: left;
+                                height: 46px;
+                                padding: 0 10px;
+                            }
+
+                                .rate:not(:checked) > input {
+                                    position: absolute;
+                                    top: -9999px;
+                                }
+
+                                .rate:not(:checked) > label {
+                                    float: right;
+                                    width: 1em;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    cursor: pointer;
+                                    font-size: 30px;
+                                    color: #ccc;
+                                }
+
+                                    .rate:not(:checked) > label:before {
+                                        content: '★ ';
+                                    }
+
+                                .rate > input:checked ~ label {
+                                    color: #ffc700;
+                                }
+
+                                .rate:not(:checked) > label:hover,
+                                .rate:not(:checked) > label:hover ~ label {
+                                    color: #deb217;
+                                }
+
+                                .rate > input:checked + label:hover,
+                                .rate > input:checked + label:hover ~ label,
+                                .rate > input:checked ~ label:hover,
+                                .rate > input:checked ~ label:hover ~ label,
+                                .rate > label:hover ~ input:checked ~ label {
+                                    color: #c59b08;
+                                }
+                        </style>
+
+
+                        <html>
+
+                        <head>
+                            <meta charset="UTF-8">
+                            <link rel="stylesheet" type="text/css" href="style.css">
+                            <title>Star rating using pure CSS</title>
+                        </head>
+
+                        <body>
+                            <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                        </body>
+
+                    </html>
+                </td>
+            </tr>
+
+            <tr>
+                <td valign="top" class="h4">Content &emsp;</td>
+                <td>@Html.TextAreaFor(model => model.Content, new { cols = 70, rows = 6 })</td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input class="btn theme-button" style="color:orange" type="submit" value="Send" />
+                    @Html.HiddenFor(model => model.ProductId)
+                </td>
+            </tr>
+        </table>
+
+    }
+}
+
+    <br />
+    <br />
+    <br />
+
+    @foreach (var review in ViewBag.reviews)
+    {
+        if (@review.ProductId == @ViewBag.products.Id)
+        {
+            <div class="card" style="width: 40rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">User name: &nbsp;<span class="h4">  @review.Account.UserName</span></li>
+                    <li class="list-group-item">
+                        <span>Rating: &nbsp;&nbsp;&nbsp;</span>
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            if (i < @review.Rating)
+                            {
+                                <span class="fa fa-star checked" style="color:orange"></span>
+                            }
+                            else
+                            {
+                                <span class="fa fa-star" style="color:darkgrey"></span>
+                            }
+                        }
+                    </li>
+                    <li class="list-group-item">Rivew: &nbsp;&nbsp;&nbsp;<span class="h4"> @review.Content</span></li>
+                    <li class="list-group-item">Date post: &nbsp;&nbsp;<span class="h5"> @review.DatePost.ToString("d")</span></li>
+                </ul>
+            </div>
+        }
+    }
+
+</body>
+</html>
+
